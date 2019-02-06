@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  frrouting:
+    build: '.'
+    image: 'frrouting'
+    restart: 'unless-stopped'
+    cap_add:
+     - NET_ADMIN
+     - NET_BROADCAST
+     - SYS_ADMIN
+    volumes:
+    #  - '/etc/localtime:/etc/localtime:ro'
+     - './data:/etc/frr'
+    ports:
+     - '179:179'
